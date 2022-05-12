@@ -13,7 +13,7 @@ import MenuDrawer from "./MenuDrawer";
 import HomeIcon from "@material-ui/icons/Home";
 import THEMES from "../consts/THEMES";
 
-export default function MenuAppBar({
+export default function NavBar({
   popularIngsSwitch,
   popularCocktailsSwitch,
   cartQty,
@@ -61,7 +61,7 @@ const onClear = () => {
 			setSearchCocktil('');
 			popularCocktailsSwitch();
 		} else navigate("/");
-				
+				console.log('mainpage')
  }
 	return (
 		<div className={classes.rootnav}>

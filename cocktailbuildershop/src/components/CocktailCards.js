@@ -51,11 +51,12 @@ export default function CocktailCards() {
 					(item) => item.strDrink.trim().toLowerCase().includes(searchCocktail.trim().toLowerCase()))
 			)
 		}
-
+// console.log(1)
 	}, [searchCocktail,data,setFilteredApi])
 
 	useEffect(() => {
 		currentUser && setCartQty(calcItemQty(currentUser));
+		// console.log(2)
 	},[currentUser,cartChanged]);
 	
 	useEffect(() => {
@@ -66,6 +67,7 @@ export default function CocktailCards() {
 					setCartChanged([]);
 				}
 			);
+			// console.log(3)
 	}, [currentUser]);
 
 
@@ -75,6 +77,7 @@ export default function CocktailCards() {
 		} else if (data.length) {
 			setShow(popularCocktails);
 		}
+		// console.log(4)
 	}, [data, popularCocktails, filteredApi]);
 
 	useEffect(() => {
@@ -144,10 +147,12 @@ export default function CocktailCards() {
 				]);
 				setData(each);
 			});
+			// console.log(5)
 	}, []);
 
 
 	useEffect(() => {
+		console.log(filteredApi.length, searchCocktail.length)
 		if (filteredApi.length && !resultSearchCocktail.length) {
 			setShow(filteredApi);
 			setHeader(
@@ -156,7 +161,7 @@ export default function CocktailCards() {
 				}`
 			);
 		} else if (
-			resultSearchCocktail.length ||
+			(resultSearchCocktail.length && searchCocktail.length) ||
 			(!resultSearchCocktail.length && searchCocktail.length)
 		) {
 			setShow(resultSearchCocktail);
@@ -165,6 +170,7 @@ export default function CocktailCards() {
 			setShow(popularCocktails);
 			setHeader("MOST POPULAR COCKTAILS");
 		}
+		console.log(6)
 	}, [
 		data,
 		popularCocktails,
@@ -248,6 +254,7 @@ export default function CocktailCards() {
 		setHeader("MOST POPULAR COCKTAILS");
 		setShow(popularCocktails);
 	}
+	console.log('end')
 	return (
 		<>
 			<main>
